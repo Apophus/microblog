@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Hi, {{ user.nickname }}!</h1>
-    {% for post in posts %} #the for loop controls the number of posts the blog can take
+    {% for post in posts %}
     <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}
   </body>
