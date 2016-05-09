@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %}<!--Establishes the inheritance between base and index.html-->
+{% block content %}<!--The name of our block statement is content. This is how Jinja establishes the connection and joins them into one.-->
     <h1>Hi, {{ user.nickname }}!</h1>
     {% for post in posts %}
     <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
