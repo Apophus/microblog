@@ -19,5 +19,4 @@ These decorators create mappings from _URLs_ / and _/index_ to it's function
 def index():
     user = {'nickname': 'Miguel'}  # fake user
     return render_template('index.html',
-                           title='Home',
                            user=user)
