@@ -8,11 +8,11 @@
       <p>
           Please enter your OpenID:<br>
           {{ form.openid(size=80) }}<br><!--Generates an openid field of width 80 characters.-->
-      </p>
-      <p>{{ form.remember_me }} Remember Me</p>
-      {% for error in form.openid.errors %}
+          {% for error in form.openid.errors %}
             <span style="color: red;">[{{ error }}]</span>
           {% endfor %}<br>
+      </p>
+      <p>{{ form.remember_me }} Remember Me</p>
       <p><input type="submit" value="Sign In"></p>
   </form>
 {% endblock %}
