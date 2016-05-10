@@ -1,34 +1,14 @@
 #!usr/bin/python
-'''
-**Views** are handlers that respond to requests from browsers and other clients.
-In Flask they are written as python functions
-Each is mapped to one or more **REQUEST URLs**
 
-    The view we are creating returns a string to be displayed on the client's web browser
-'''
-from flask import render_template
-'''The above imported function takes a template file name and a variable list of template arguments and returns the rendered template with arguments replaced.
-It also invokes the Jinja2 templating engine. Jinja2 replaces the{{..}} blocks with the corresponding values for template arguments.'''
+from flask import render_template, flash, redirect
 from app import app
-'''Essentially, decorators work as wrappers, modifying the behavior of the code before and after a target function execution.
+from .forms import LoginForm
 
-These decorators create mappings from _URLs_ / and _/index_ to it's function
-'''
-@app.route('/')
-@app.route('/index')
-def index():
-    user = {'nickname': 'Miguel'}  # fake user
-    posts = [  # fake array of posts
-        { 
-            'author': {'nickname': 'John'}, 
-            'body': 'Beautiful day in Portland!' 
-        },
-        { 
-            'author': {'nickname': 'Susan'}, 
-            'body': 'The Avengers movie was so cool!' 
-        }
-    ]
-    return render_template("index.html",
-                           title='Home',
-                           user=user,
-                           posts=posts)
+# index view function suppressed for brevity
+
+@app.route('/login', methods=['GET', 'POST'])#methods argument tells flask that the view accepts GET and POST requests 
+def login():
+    form = LoginForm()
+    return render_template('login.html', 
+                           title='Sign In',
+                           form=form)
