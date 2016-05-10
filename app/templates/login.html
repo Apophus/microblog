@@ -1,0 +1,15 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Sign In</h1>
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}<!--the template argument form.hidden.tag() get replaced with a hidden field that implements a CSFR prevention -->
+      <p>
+          Please enter your OpenID:<br>
+          {{ form.openid(size=80) }}<br><!--Generates an openid field of width 80 characters.-->
+      </p>
+      <p>{{ form.remember_me }} Remember Me</p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+{% endblock %}
