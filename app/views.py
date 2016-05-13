@@ -1,19 +1,36 @@
-#!usr/bin/python
-
 from flask import render_template, flash, redirect
 from app import app
 from .forms import LoginForm
 
-# index view function suppressed for brevity
 
-@app.route('/login', methods=['GET', 'POST'])#methods argument tells flask that the view accepts GET and POST requests 
+@app.route('/')
+@app.route('/index')
+def index():
+    user = {'nickname': 'Miguel'}
+    posts = [
+        {
+            'author': {'nickname': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'nickname': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template('index.html',
+                           title='Home',
+                           user=user,
+                           posts=posts)
+
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():#this function does all the processing work.If form gets submitted before it's filled, it returns False.
+    if form.validate_on_submit():
         flash('Login requested for OpenID="%s", remember_me=%s' %
-              (form.openid.data, str(form.remember_me.data)))#if validate_on_submit returns true flash displays message on next page to user.
+              (form.openid.data, str(form.remember_me.data)))
         return redirect('/index')
-    return render_template('login.html', 
+    return render_template('login.html',
                            title='Sign In',
-                           form=form
-                           providers = app.config['OPENID_PROVIDERS'])#gets the openid list
+                           form=form,
+                           providers=app.config['OPENID_PROVIDERS'])
