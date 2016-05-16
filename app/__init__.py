@@ -12,4 +12,4 @@ app.config.from_object('config') #tells flask to read the config file and implem
 db = SQLAlchemy(app)
 from app import views, models #app is the package that from which we import the** views module**
                         
-    
+   
