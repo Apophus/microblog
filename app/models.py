@@ -5,6 +5,6 @@ class User(db.Model):
     nickname = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
 
-    def __repr__(self):
+    def __repr__(self):#tells python how to print objects of this class.
         return '<User %r>' % (self.nickname)
 
