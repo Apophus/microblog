@@ -1,3 +1,4 @@
+#!usr/bin/python
 from app import db
 
 class User(db.Model):
